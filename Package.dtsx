@@ -1,0 +1,956 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/21/2023 10:15:39 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-GK7R4AN"
+  DTS:CreatorName="DESKTOP-GK7R4AN\navsa"
+  DTS:DTSID="{6BE4C39B-F0C0-4910-A8E3-178313DE639C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{DAFD50C4-E1F2-4F83-8A89-71CC88DF336C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{89D5863C-145C-4C3C-9F5C-2A25EA14D8DE}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\navsa\Desktop\Copy of CTEST2.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[queens-ece-capstone-server.database.windows.net.demo.netid_18ns27]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1C4D0989-41C8-4D23-98D8-63CF35B8C881}"
+      DTS:ObjectName="queens-ece-capstone-server.database.windows.net.demo.netid_18ns27">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=queens-ece-capstone-server.database.windows.net;User ID=netid_18ns27;Initial Catalog=demo;Provider=SQLNCLI11.1;Application Name=SSIS-Package-{1C4D0989-41C8-4D23-98D8-63CF35B8C881}queens-ece-capstone-server.database.windows.net.demo.netid_18ns27;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4o3hws6vqkui7iDn7JCKggAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA6KroRbtcLIcrvt7oAjMJbMECohh0lWSEKuNljyAJ6AAAAAAAOgAAAAAIAACAAAAAWGXZVqDh5DRI1T11Y/y8cm49SZp40Y7MTrGPb+fQGjSAAAAC1Osdb+KOCSFRk7GFjea/1zIEHCxciMvBKup6biFtHX0AAAABdh2/ZjyTxcCgfihdBgWZNjG0rGJQLGEy2PO1dSnR23mGYcDwTZNnk8kgj6KmpbJ8x41nQf2HyPdTuPB9Le9/b</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\P1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7DB59367-087B-47AE-9289-7AB5B309CAF1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="P1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\P1\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\P1\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\P1\Data Conversion.Inputs[Data Conversion Input].Columns[PatientName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PatientName"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[PatientName]" />
+                    <inputColumn
+                      refId="Package\P1\Data Conversion.Inputs[Data Conversion Input].Columns[DiagnosisName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DiagnosisName"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[DiagnosisName]" />
+                    <inputColumn
+                      refId="Package\P1\Data Conversion.Inputs[Data Conversion Input].Columns[ProviderKey]"
+                      cachedDataType="r8"
+                      cachedName="ProviderKey"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[ProviderKey]" />
+                    <inputColumn
+                      refId="Package\P1\Data Conversion.Inputs[Data Conversion Input].Columns[ProviderName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProviderName"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[ProviderName]" />
+                    <inputColumn
+                      refId="Package\P1\Data Conversion.Inputs[Data Conversion Input].Columns[TestName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TestName"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[TestName]" />
+                    <inputColumn
+                      refId="Package\P1\Data Conversion.Inputs[Data Conversion Input].Columns[MedicationName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MedicationName"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[MedicationName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\P1\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\P1\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PatientName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PatientName]"
+                      name="Copy of PatientName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\P1\Excel Source.Outputs[Excel Source Output].Columns[PatientName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DiagnosisName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DiagnosisName]"
+                      name="Copy of DiagnosisName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\P1\Excel Source.Outputs[Excel Source Output].Columns[DiagnosisName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ProviderKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ProviderKey]"
+                      name="Copy of ProviderKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\P1\Excel Source.Outputs[Excel Source Output].Columns[ProviderKey]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ProviderName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ProviderName]"
+                      name="Copy of ProviderName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\P1\Excel Source.Outputs[Excel Source Output].Columns[ProviderName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TestName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TestName]"
+                      name="Copy of TestName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\P1\Excel Source.Outputs[Excel Source Output].Columns[TestName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MedicationName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MedicationName]"
+                      name="Copy of MedicationName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\P1\Excel Source.Outputs[Excel Source Output].Columns[MedicationName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\P1\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\P1\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\P1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\P1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\P1\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\P1\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\P1\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[patientkey]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[patientkey]"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[patientkey]"
+                      name="patientkey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[PatientName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[PatientName]"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[PatientName]"
+                      name="PatientName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[DiagnosisName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[DiagnosisName]"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[DiagnosisName]"
+                      name="DiagnosisName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[ProviderName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[ProviderName]"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[ProviderName]"
+                      name="ProviderName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[ProviderKey]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[ProviderKey]"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[ProviderKey]"
+                      name="ProviderKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[MedicationName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[MedicationName]"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[MedicationName]"
+                      name="MedicationName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[TestName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[TestName]"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[TestName]"
+                      name="TestName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[DiagnosisKey]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[DiagnosisKey]"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[DiagnosisKey]"
+                      name="DiagnosisKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[patientkey]"
+                      dataType="r8"
+                      name="patientkey" />
+                    <externalMetadataColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[PatientName]"
+                      dataType="wstr"
+                      length="255"
+                      name="PatientName" />
+                    <externalMetadataColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[DiagnosisName]"
+                      dataType="wstr"
+                      length="255"
+                      name="DiagnosisName" />
+                    <externalMetadataColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[ProviderName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProviderName" />
+                    <externalMetadataColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[ProviderKey]"
+                      dataType="r8"
+                      name="ProviderKey" />
+                    <externalMetadataColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[MedicationName]"
+                      dataType="wstr"
+                      length="255"
+                      name="MedicationName" />
+                    <externalMetadataColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[TestName]"
+                      dataType="wstr"
+                      length="255"
+                      name="TestName" />
+                    <externalMetadataColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Output].ExternalColumns[DiagnosisKey]"
+                      dataType="r8"
+                      name="DiagnosisKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\P1\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[patientkey]"
+                      dataType="r8"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[patientkey]"
+                      name="patientkey" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[PatientName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[PatientName]"
+                      name="PatientName" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[DiagnosisName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[DiagnosisName]"
+                      name="DiagnosisName" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[ProviderName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[ProviderName]"
+                      name="ProviderName" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[ProviderKey]"
+                      dataType="r8"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[ProviderKey]"
+                      name="ProviderKey" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[MedicationName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[MedicationName]"
+                      name="MedicationName" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[TestName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[TestName]"
+                      name="TestName" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[DiagnosisKey]"
+                      dataType="r8"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[DiagnosisKey]"
+                      name="DiagnosisKey" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\P1\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[patient_diagnosis]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\P1\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[queens-ece-capstone-server.database.windows.net.demo.netid_18ns27]"
+                  connectionManagerRefId="Package.ConnectionManagers[queens-ece-capstone-server.database.windows.net.demo.netid_18ns27]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of DiagnosisName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Copy of DiagnosisName"
+                      externalMetadataColumnId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[diagnosis_name]"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DiagnosisName]" />
+                    <inputColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of MedicationName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Copy of MedicationName"
+                      externalMetadataColumnId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[medication_name]"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of MedicationName]" />
+                    <inputColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of PatientName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Copy of PatientName"
+                      externalMetadataColumnId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[patient_name]"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PatientName]" />
+                    <inputColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ProviderKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of ProviderKey"
+                      externalMetadataColumnId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[provider_key]"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ProviderKey]" />
+                    <inputColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ProviderName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Copy of ProviderName"
+                      externalMetadataColumnId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[provider_name]"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ProviderName]" />
+                    <inputColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of TestName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Copy of TestName"
+                      externalMetadataColumnId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[test_name]"
+                      lineageId="Package\P1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TestName]" />
+                    <inputColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[patientkey]"
+                      cachedDataType="r8"
+                      cachedName="patientkey"
+                      externalMetadataColumnId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[patient_key]"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[patientkey]" />
+                    <inputColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DiagnosisKey]"
+                      cachedDataType="r8"
+                      cachedName="DiagnosisKey"
+                      externalMetadataColumnId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[diagnosis_key]"
+                      lineageId="Package\P1\Excel Source.Outputs[Excel Source Output].Columns[DiagnosisKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[patient_key]"
+                      dataType="i8"
+                      name="patient_key" />
+                    <externalMetadataColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[diagnosis_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="diagnosis_name" />
+                    <externalMetadataColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[medication_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="medication_name" />
+                    <externalMetadataColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[patient_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="patient_name" />
+                    <externalMetadataColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[provider_key]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="provider_key" />
+                    <externalMetadataColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[provider_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="provider_name" />
+                    <externalMetadataColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[test_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="test_name" />
+                    <externalMetadataColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pdf]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="pdf" />
+                    <externalMetadataColumn
+                      refId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[diagnosis_key]"
+                      dataType="i8"
+                      name="diagnosis_key" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\P1\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\P1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\P1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\P1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\P1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\P1.Paths[Data Conversion Output]"
+              endId="Package\P1\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\P1\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\P1.Paths[Excel Source Output]"
+              endId="Package\P1\Data Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\P1\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\P2"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2F619F3A-0EC2-48CB-8637-EFDE608CE7F9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="P2"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\P2\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\P2\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\P2\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\P2\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\P2\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\P2\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\P2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\P2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\P2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\P2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="92,42"
+          Id="Package\P1"
+          TopLeft="368,189" />
+        <NodeLayout
+          Size="92,42"
+          Id="Package\P2"
+          TopLeft="421,338" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\P1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="144,42"
+          Id="Package\P1\Excel Source"
+          TopLeft="287,206" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\P1\OLE DB Destination"
+          TopLeft="262,580" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\P1\Data Conversion"
+          TopLeft="264,387" />
+        <EdgeLayout
+          Id="Package\P1.Paths[Excel Source Output]"
+          TopLeft="359,248">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.5,139"
+              Start="0,0"
+              End="-14.5,131.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,65.5"
+                    Point2="0,69.5"
+                    Point3="-4,69.5" />
+                  <mssgle:LineSegment
+                    End="-10.5,69.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.5,69.5"
+                    Point2="-14.5,69.5"
+                    Point3="-14.5,73.5" />
+                  <mssgle:LineSegment
+                    End="-14.5,131.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\P1.Paths[Data Conversion Output]"
+          TopLeft="347.5,429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,151"
+              Start="0,0"
+              End="0,143.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,143.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\P1\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\P1\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\P2">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\P2\Derived Column"
+          TopLeft="654,245" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
